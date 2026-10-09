@@ -1,6 +1,6 @@
 # Auto Hotspot for Windows 11
 
-[Русская версия](README.ru.md)
+[Русская версия](RREADME.md)
 
 Automatically turns on the Windows **Mobile Hotspot** when you sign in and keeps it on. No manual toggling, no passwords or settings to put into the script.
 
@@ -19,6 +19,7 @@ Automatically turns on the Windows **Mobile Hotspot** when you sign in and keeps
 |---|---|
 | `install-hotspot.bat` | Installer: asks for admin rights, copies the script, creates the scheduled task, starts it |
 | `Enable-Hotspot.ps1` | PowerShell script that turns on the hotspot and keeps checking it |
+| `uninstall-hotspot.bat` | Uninstaller: stops and removes the scheduled task and deletes the installed files |
 
 ## Requirements
 
@@ -85,13 +86,17 @@ schtasks /Query /TN "AutoHotspot"
 
 While the task is installed, the hotspot comes back on within 30 seconds after you turn it off manually.
 
-Stop temporarily (run as administrator), then turn the hotspot off in Windows settings:
+**Uninstall (recommended):** double-click `uninstall-hotspot.bat` and accept the UAC prompt. It stops and deletes the `AutoHotspot` task, makes sure no script process is left running, and deletes `C:\ProgramData\AutoHotspot`.
+
+The uninstaller does not switch the hotspot off. If it is still on, turn it off in **Settings → Network & internet → Mobile hotspot**.
+
+**Stop temporarily** (run as administrator), then turn the hotspot off in Windows settings. The task starts again at the next sign-in:
 
 ```
 schtasks /End /TN "AutoHotspot"
 ```
 
-Remove completely:
+**Manual removal**, if you do not want to use the uninstaller:
 
 ```
 schtasks /End /TN "AutoHotspot"
