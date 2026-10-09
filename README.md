@@ -1,6 +1,6 @@
 # Auto Hotspot for Windows 11
 
-[Русская версия](README.ru.md)
+[Русская версия](RREADME.md)
 
 Automatically turns on the Windows **Mobile Hotspot** when you sign in and keeps it on. No manual toggling, no passwords or settings to put into the script.
 
